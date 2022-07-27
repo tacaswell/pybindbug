@@ -1,4 +1,4 @@
-# pybind11 / py13 bug
+# pybind11 / py312 bug
 
 This is a producing case of a bug which compiles with pybind11 on both py310
 and py312 (and py311).
