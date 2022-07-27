@@ -1,0 +1,17 @@
+__pycache__/
+build/
+dist/
+contourpy.egg-info/
+result_images/
+wheelhouse/
+.pytest_cache/
+*.so
+*.pyd
+.vscode/
+.asv/
+_build/
+generated/
+benchmarks/*.png
+benchmarks/*.svg
+*~
+*egg-info/
