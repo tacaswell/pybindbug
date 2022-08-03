@@ -3,7 +3,7 @@
 This is a producing case of a bug which compiles with pybind11 on both py310
 and py312 (and py311).
 
-It will import correctly on py310, py311a7, and the 3.11 dev branch, but not
+It will import correctly on py310, py311b5, and the 3.11 dev branch, but not
 with py312 (CPython main branch).  The import failure is:
 
 ```
