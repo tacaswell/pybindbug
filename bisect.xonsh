@@ -1,0 +1,41 @@
+#! /usr/bin/xonsh
+
+import argparse
+from xonsh.dirstack import with_pushd
+from pathlib import Path
+
+$RAISE_SUBPROC_ERROR = True
+
+parser = argparse.ArgumentParser(description='Build the world.')
+parser.add_argument("--target", help="name of env to create", type=str, default='bisect')
+args = parser.parse_args()
+
+prefix = ${'HOME'}+f"/.pybuild/{args.target}"
+prefix_as_path = Path(prefix)
+if prefix_as_path.exists():
+    rm -rf @(prefix)
+prefix_as_path.mkdir(parents=True)
+
+
+git clean -xfd
+./configure
+make -j
+./configure \
+    --prefix=@(prefix) \
+    --enable-shared LDFLAGS=@(f"-Wl,-rpath,$HOME/.pybuild/{args.target}/lib")
+make -j
+make install
+
+
+$HOME/.pybuild/@(args.target)/bin/python3 -m venv --copies --clear ~/.virtualenvs/@(args.target)
+# the build package seems to require this?
+ln $HOME/.pybuild/@(args.target)/bin/python3 $HOME/.pybuild/@(args.target)/bin/python
+
+source-bash  f'~/.virtualenvs/{args.target}/bin/activate'
+pip install pybind11
+
+with with_pushd('/home/tcaswell/source/p/tacaswell/pybind11bug'):
+    git clean -xfd
+    pip install .
+
+python -c 'import pybindbug._bug'

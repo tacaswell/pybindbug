@@ -1,0 +1,29 @@
+$ git bisect log
+git bisect start
+# status: waiting for both good and bad commits
+# good: [72cad6cfe5e8d0b424bdd224feee6a22631ec3e6] gh-95451: Update docs for wasm32-emscripten and -wasi platforms (GH-95452)
+git bisect good 72cad6cfe5e8d0b424bdd224feee6a22631ec3e6
+# status: waiting for bad commit, 1 good commit known
+# bad: [e3b6ff19aaa318a813130ba9ad2ab0a332f27feb] gh-95451: Update docs for wasm32-emscripten and -wasi platforms (GH-95452)
+git bisect bad e3b6ff19aaa318a813130ba9ad2ab0a332f27feb
+# good: [8d32a5c8c4e9c90b0a21e8b2fa0cd567465ced2b] Update the SOURCE_URI in pyspecific.py to point to the new branch
+git bisect good 8d32a5c8c4e9c90b0a21e8b2fa0cd567465ced2b
+# bad: [dd78aae34bc3c0fcf14b2e7be64e08246ee277cc] gh-91387: Fix tarfile test on WASI (GH-93984)
+git bisect bad dd78aae34bc3c0fcf14b2e7be64e08246ee277cc
+# good: [ac1dcb8ee7745561407130bb917de3277528d4f6] gh-92434: Silence a compiler warning in _xxsubinterpretersmodule.c for 32bit version (gh-93091)
+git bisect good ac1dcb8ee7745561407130bb917de3277528d4f6
+# bad: [2c3fe5eeb2b64deb2132d9259e74b521c14fd92d] gh-87961: Remove outdated notes from functions that aren't in the Limited API (GH-93581)
+git bisect bad 2c3fe5eeb2b64deb2132d9259e74b521c14fd92d
+# bad: [5247389369ac3da35c44f7c0d8f4facc0300883a] Remove the execution bit to some socket-related files. (#93368)
+git bisect bad 5247389369ac3da35c44f7c0d8f4facc0300883a
+# good: [47e68d451586541259ffb6ae29e948d4ea67c059] bpo-46951: Order contents of zipapps (GH-31713)
+git bisect good 47e68d451586541259ffb6ae29e948d4ea67c059
+# bad: [8136606769661c103c46d142e52ecbbbb88803f6] bpo-42272: fix misleading warning filter message/module docs (#23172)
+git bisect bad 8136606769661c103c46d142e52ecbbbb88803f6
+# good: [642d1fa81fed8ac260e1719013d77b9dfd93920f] gh-92727: Add example of named group in doc for re.Match.__getitem__ (#92730)
+git bisect good 642d1fa81fed8ac260e1719013d77b9dfd93920f
+# bad: [66f5add1f0ac801cba5ece36e6cfd68985d82029] bpo-41287: Handle `doc` argument of `property.__init__` in subclasses (#23205)
+git bisect bad 66f5add1f0ac801cba5ece36e6cfd68985d82029
+# good: [877ad7b3b2778a305d3989d58ebd68cb01baf26e] gh-92240 : Include release dates for "What's New In Python 3.X" (#92937)
+git bisect good 877ad7b3b2778a305d3989d58ebd68cb01baf26e
+# first bad commit: [66f5add1f0ac801cba5ece36e6cfd68985d82029] bpo-41287: Handle `doc` argument of `property.__init__` in subclasses (#23205)
